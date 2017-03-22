@@ -1,0 +1,97 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>循环向上滚动的文字</title>
+    <!--<link href="css/scrollTop.css" rel="stylesheet" type="text/css" />-->
+    <style>
+
+        #dome{
+            overflow:hidden; /*溢出的部分不显示*/
+            height:180px;
+            padding:5px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+<div class="domes">
+
+    <div class="dome_top">近7日畅销榜</div>
+
+    <div id="dome">
+        <div id="dome1">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><img src="images/scrollTop_1.jpg" alt="scroll" /></td>
+                    <td><div class="title">社交疯狂项语</div>
+                        <font class="price">￥57.00</font> 折扣：52折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_2.jpg" alt="scroll" /> </td>
+                    <td><div class="title">傲慢与偏见</div>
+                        <font class="price">￥20.00</font> 折扣：25折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_3.jpg" alt="scroll" /></td>
+                    <td><div class="title">玻璃鞋全集（50集34VCD）</div>
+                        主演：金贤珠 金芝荷
+                        <font class="price">￥300.00</font> 折扣：52折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_4.jpg" alt="scroll" /></td>
+                    <td><div class="title">澳大利亚：假日之旅</div>
+                        <font class="price">￥53.00</font> 折扣：51折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_5.jpg" alt="scroll" /> </td>
+                    <td><div class="title">浪漫地中海：假日之旅</div>
+                        <font class="price">&yen;80.00</font> 折扣：52折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_6.jpg" alt="scroll" /></td>
+                    <td><div class="title">老人与海</div>
+                        <font class="price">&yen;57.00</font> 折扣：52折</td>
+                </tr>
+                <tr>
+                    <td><img src="images/scrollTop_7.jpg" alt="scroll" /></td>
+                    <td><div class="title">欧陆风情：假日之旅</div>
+                        <font class="price">&yen;53.00</font> 折扣：52折</td>
+                </tr>
+            </table>
+        </div>
+        <div id="dome2"></div>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="jquery-3.1.1.js" type="text/javascript"></script>
+<script>
+    function $(element){
+        return document.getElementById(element);
+    }
+    var dome=$("#dome");
+    var dome1=$("#dome1");
+    var dome2=$("#dome2");
+    var speed=50; //设置向上滚动速度
+    dome2.innerHTML=dome1.innerHTML //复制dome1为dome2
+    function moveTop(){
+        if(dome2.offsetTop-dome.scrollTop<=0) //当滚动至dome1与dome2交界时
+            dome.scrollTop-=dome1.offsetHeight //dome跳到最顶端
+        else{
+            dome.scrollTop++
+        }
+    }
+    var MyMar=setInterval(moveTop,speed) //设置定时器
+    dome.onmouseover=function() {clearInterval(MyMar)} //鼠标移上时清除定时器达到滚动停止的目的
+    dome.onmouseout=function() {MyMar=setInterval(moveTop,speed)} //鼠标移开时重设定时器，继续滚动
+
+</script>
+
+
+
+
+
